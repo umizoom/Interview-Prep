@@ -3,6 +3,7 @@
 def is_odd_or_even(number: int)-> str:
     """
     Given a number, determine if its Odd or Even
+    O(1), Constant time
     :param number: int
     :return: str
 
@@ -18,7 +19,7 @@ def is_odd_or_even(number: int)-> str:
 
 def dic_look_up(dic_to_search: dict, word: str) -> int or None:
     """
-
+    O(1), constant time
     :param dic_to_search:
     :param word:
     :return: int
@@ -36,6 +37,7 @@ def dic_look_up(dic_to_search: dict, word: str) -> int or None:
 def find_max(numbers: list) -> int:
     """
     Finds the largest number in an array
+    O(n)
     :param numbers:
     :return:
 
@@ -78,7 +80,7 @@ def has_duplicates(array: list) -> list or None:
 
 def faster_has_duplicates(array: list) -> list:
     """
-    Removes duplicates in linear time.
+    Removes duplicates in linear time, IE: O(n)
     :param array:
     :return:
     >>> faster_has_duplicates([3,99,8,3,4,66,99])
@@ -125,6 +127,42 @@ def binary_search(array: list, num_to_find ) -> bool:
         return binary_search(array[mid:], num_to_find)
 
 
+def add_sum(nums: list, total: int) -> int:
+    """
+    Calculate the sum of a list using Recursion
+    O(n)
+    :param nums:
+    :return:
+    >>> add_sum([1,2,5,4,7,2], total = 0)
+    21
+    """
+    total = total + nums.pop()
+    if len(nums) == 0:
+        return total
+    return add_sum(nums, total)
+
+
+def sum_to_one(n):
+    """
+    O(N)
+    :param n:
+    :return:
+    >>> sum_to_one(7)
+    Recursing with input: 7
+    Recursing with input: 6
+    Recursing with input: 5
+    Recursing with input: 4
+    Recursing with input: 3
+    Recursing with input: 2
+    28
+    """
+    if n == 1:
+        return n
+    print("Recursing with input: {0}".format(n))
+    return n + sum_to_one(n - 1)
+
+
 if __name__ == "__main__":
     import doctest
     doctest.testmod()
+
