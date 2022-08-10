@@ -35,21 +35,33 @@ def isValid(s: str) -> bool:
     >>> isValid("(])")
     False
     """
+    # base case. If odd number of elements, fail fast
     if len(s) % 2 != 0:
         return False
+    # Create a empty stack to push open brackets to
     stack = []
+    # create a dic of valid brackets
     valid_brackets = {'(': ')', '[': ']', '{': '}'}
+    # loop through each bracket
     for bracket in s:
+        # if bracket is in list of keys. IE open bracket push to stack
         if bracket in valid_brackets.keys():
             stack.append(bracket)
         else:
+            # otherwise it must be a closed bracket
             if not stack:
+                # if the stack is empty, that means there is no closing bracket, fail
                 return False
+            # Pop the last forward bracket
             forward_bracket = stack.pop()
+            # check to see if the popped forward brackets value does not match the closing bracket
+            # this means the forward bracket and the closing bracket are not matched. Fail
             if bracket != valid_brackets[forward_bracket]:
                 return False
     if stack:
+        # if the stack is not empty after the while loop, it means we did find pairs to all the brackets
         return False
+    # Otherwise, it's a balanced stack
     return True
 
 
@@ -146,6 +158,7 @@ def count_arr(arr: list) -> int:
     count += 1
     arr.pop()
     return count + count_arr(arr)
+
 
 def max_num(arr: list) -> int or None:
     """
