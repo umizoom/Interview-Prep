@@ -103,26 +103,102 @@ def mergeTwoLists(list1: Optional[ListNode], list2: Optional[ListNode]) -> Optio
             tail.next = list2
         return root.next
 
-#
-# def maxProfit(prices: List[int]) -> int:
-#     """
-#
-#     :param prices:
-#     :return:
-#     >>> maxProfit([7,1,5,3,6,4])
-#     5
-#     >>> maxProfit([7,6,4,3,1])
-#     0
-#     """
-#     reversed_prices = prices[:]
-#     reversed_prices.sort(reverse=True)
-#     if prices == reversed_prices:
-#         return 0
-#
-#     for i in range(len(prices)):
-#         for j in range( i +1, len(prices)):
-#             if prices[i] < prices[j]:
-#                 print(prices[j])
+
+def maxProfit(prices: List[int]) -> int:
+    """
+    Problem: 121. Best Time to Buy and Sell Stock
+    Time complexity: O(n)
+    This problem uses a technique called 2 pointers, IE left and right
+    :param prices:
+    :return:
+    >>> maxProfit([7,1,5,3,6,4])
+    5
+    >>> maxProfit([7,6,4,3,1])
+    0
+    """
+    l, r = 0, 1
+    max_p = 0
+    while r < len(prices):
+        if prices[l] < prices[r]:
+            profit = prices[r] - prices[l]
+            max_p = max(max_p, profit)
+        else:
+            l = r
+        r += 1
+    return max_p
+
+
+def isPalindrome(s: str) -> bool:
+    """
+    Problem 125: Valid Palindrome
+    This problem uses a technique called 2 pointers, IE left and right
+    :param s:
+    :return:
+    >>> isPalindrome(s="A man, a plan, a canal: Panama")
+    True
+    >>> isPalindrome(s="race a car")
+    False
+    """
+    l, r = 0, len(s) - 1
+
+    while l < r:
+        while l < r and s[l].isalnum() is False:
+            l += 1
+        while r > l and s[r].isalnum() is False:
+            r -= 1
+        if s[l].lower() != s[r].lower():
+            return False
+        l, r = l + 1, r - 1
+    return True
+
+
+def isPalindrome_2(s: str) -> bool:
+    """
+    Problem 125: Valid Palindrome
+    Lower solution
+    :param s:
+    :return:
+    >>> isPalindrome(s="A man, a plan, a canal: Panama")
+    True
+    >>> isPalindrome(s="race a car")
+    False
+    """
+    new_string = ''
+    for c in s:
+        if c.isalnum():
+            new_string = new_string + c.lower()
+    return new_string == new_string[::-1]
+
+
+def is_anagram(s: str, t: str) -> bool:
+    """
+    Problem 242: Valid Anagram
+
+    :param s:
+    :param t:
+    :return:
+    >>> is_anagram(s = "anagram", t = "nagaram")
+    True
+    >>> is_anagram(s = "rat", t = "car")
+    False
+    """
+    if len(s) != len(t):
+        return False
+    count_s, count_t = {}, {}
+
+    for i in range(len(s)):
+        count_s[s[i]] = 1 + count_s.get(s[i], 0)
+        count_t[t[i]] = 1 + count_t.get(t[i], 0)
+
+    for key in count_s.keys():
+        try:
+            if count_s[key] != count_t[key]:
+                return False
+        except KeyError:
+            return False
+    return True
+
+
 
 
 def sum(arr: list) -> int:
@@ -204,6 +280,7 @@ def selection_sort(arr: list) -> list:
         smallest = find_smallest(arr)
         sorted_arr.append(arr.pop(smallest))
     return sorted_arr
+
 
 if __name__ == "__main__":
     import doctest
