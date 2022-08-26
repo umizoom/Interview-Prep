@@ -14,11 +14,11 @@ def two_sum(nums: List[int], target: int) -> List[int]:
     [1, 2]
     """
     hash_map = {}
-    for num in range(len(nums)):
-        compliment = target - nums[num]
+    for index in range(len(nums)):
+        compliment = target - nums[index]
         if compliment in hash_map.keys():
-            return [hash_map[compliment], num]
-        hash_map[nums[num]] = num
+            return [hash_map[compliment], index]
+        hash_map[nums[index]] = index
 
 
 def isValid(s: str) -> bool:
@@ -38,7 +38,7 @@ def isValid(s: str) -> bool:
     # base case. If odd number of elements, fail fast
     if len(s) % 2 != 0:
         return False
-    # Create a empty stack to push open brackets to
+    # Create an empty stack to push open brackets to
     stack = []
     # create a dic of valid brackets
     valid_brackets = {'(': ')', '[': ']', '{': '}'}
@@ -199,6 +199,26 @@ def is_anagram(s: str, t: str) -> bool:
     return True
 
 
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        starting_pixel = image[sr][sc]
+        if starting_pixel == color:
+            return image
+        self.dfs(image, sr, sc, color, starting_pixel)
+        return image
+
+    def dfs(self, image, sr, sc, color, starting_pixel):
+
+        if sr < 0 or sr > len(image) - 1 or sc < 0 or sc > len(image[0]) - 1 or image[sr][sc] != starting_pixel:
+            return
+
+        image[sr][sc] = color
+        self.dfs(image, sr + 1, sc, color, starting_pixel)
+        self.dfs(image, sr - 1, sc, color, starting_pixel)
+
+        self.dfs(image, sr, sc + 1, color, starting_pixel)
+
+        self.dfs(image, sr, sc - 1, color, starting_pixel)
 
 
 def sum(arr: list) -> int:

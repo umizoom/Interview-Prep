@@ -34,13 +34,13 @@ def verify_ip(ip_string: str) -> bool:
     return True
 
 
-# Question 2
-
 verify_ip(my_string_1)
 verify_ip(my_string_2)
 verify_ip(my_string_3)
 verify_ip(my_string_4)
 verify_ip(my_string_5)
+
+# Question 2
 
 array_1 = [[1, 2, 3, ],
            [2, 3, 4],
@@ -89,6 +89,8 @@ def sum_muli_array(array1: list, array2: list) -> list:
     print(array_4)
 
 
+sum_muli_array(array1=array_1, array2=array_2)
+
 # Question 3
 
 my_string = """
@@ -106,7 +108,7 @@ def find_index_of_string(string_to_check: str) -> [int]:
     """
     import re
     search = re.findall("umaid", string_to_check)
-    ## Unsure about this... I think he meant print the index from the orginal string but I am not sure how to do that.
+    # Unsure about this... I think he meant print the index from the original string but I am not sure how to do that.
     for index in range(len(search)):
         print(index)
     print(search)

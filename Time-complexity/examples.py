@@ -93,7 +93,7 @@ def faster_has_duplicates(array: list) -> list:
     return list(dict.fromkeys(array))
 
 
-def binary_search(array: list, num_to_find ) -> bool:
+def binary_search(array: list, num_to_find: int) -> bool:
     """
     This method implements the binary search algorithm. O(log n)
     :param num_to_find:

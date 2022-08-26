@@ -101,7 +101,7 @@ def binary_search(arr: list, target: int) -> int or None:
             high = mid - 1
 
 
-if __name__ ==  "__main__":
+if __name__ == "__main__":
     import doctest
     doctest.testmod()
     # start = time.time()
