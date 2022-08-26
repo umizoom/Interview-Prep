@@ -46,45 +46,42 @@ array_1 = [[1, 2, 3, ],
            [2, 3, 4],
            [5, 4, 4]]
 
-array_2 = [[5, 3, 7, ],
-           [9, 6, 9],
-           [5, 4, 5]]
+array_2 = [[5, 6, 21],
+           [18, 18, 36],
+           [25, 16, 20]]
 
 """
 output = 
-[[6, 5, 10], 
-[11, 9, 13], 
-[10, 8, 9]]
+[[6, 8, 24], 
+[20, 21, 40], 
+[30, 20, 24]]
 
-[[30, 15, 70], 
-[99, 54, 117], 
-[50, 32, 45]]
+
+[[5, 12, 63], 
+[36, 54, 144], 
+[125, 64, 80]]
 """
 
 
 def sum_muli_array(array1: list, array2: list) -> list:
     """
     array 1 and 2 are 3X3 arrays.
-    Output of this fuction should print 2 arrays.
+    Output of this function should print 2 arrays.
     array 3 is the sum of array 1 and 2
-    array 4 is the mulplication of array 1 and 2
+    array 4 is the multiplication of array 1 and 2
 
     :param array1:
     :param array2:
     :return:
     """
 
-    array_3 = [[0 for row in range(3)] for row in range(3)]
-    array_4 = [[0 for row in range(3)] for row in range(3)]
-    for r in range(len(array1)):
-        for c in range(len(array1[0])):
-            array_3[r][c] = array_1[r][c]
-            array_4[r][c] = array_1[r][c]
+    array_3 = [[0 for row in range(3)] for col in range(3)]
+    array_4 = [[0 for row in range(3)] for col in range(3)]
 
     for r in range(len(array2)):
         for c in range(len(array2[0])):
-            array_3[r][c] = array_3[r][c] + array_2[r][c]
-            array_4[r][c] = array_3[r][c] * array_2[r][c]
+            array_3[r][c] = array1[r][c] + array_2[r][c]
+            array_4[r][c] = array1[r][c] * array_2[r][c]
     print(array_3)
     print(array_4)
 
