@@ -115,3 +115,38 @@ def find_index_of_string(string_to_check: str) -> [int]:
 
 
 find_index_of_string(my_string)
+
+# Question 5
+
+input = '''
+fruit - apple 
+vegetable - Endive Carrots Broccoli 
+dessert - cake
+'''
+
+output = """
+{'fruit': 'apple', 'vegetable': 'Endive, Carrots, Broccoli', 'dessert': 'cake'}
+"""
+
+
+def sort_food(food: str) -> dict:
+    """
+    see input and output for explanation
+    :param food:
+    :return:
+    """
+    output = {}
+
+    list_food = food.split('\n')
+    for i in range(len(list_food) - 1):
+        if list_food[i] == '':
+            list_food.pop(i)
+    for entry in list_food:
+        new_entry = entry.split("-")
+        output[new_entry[0].strip()] = output.get(new_entry[0], '') + new_entry[1].strip().replace(" ", ", ")
+    print(output)
+    return output
+
+
+sort_food(input)
+
