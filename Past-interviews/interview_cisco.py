@@ -116,7 +116,7 @@ def find_index_of_string(string_to_check: str) -> [int]:
 
 find_index_of_string(my_string)
 
-# Question 5
+# Question 4
 
 input = '''
 fruit - apple 
